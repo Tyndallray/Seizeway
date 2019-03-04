@@ -15,13 +15,14 @@
   "homepage": "https://github.com/Tyndallray/Seizeway#readme",
   "dependencies": {
     "@types/createjs": "0.0.29",
+    "@types/preloadjs": "^0.6.32",
+    "@types/soundjs": "^0.6.27",
+    "@types/tweenjs": "^1.0.0",
     "createjs": "^1.0.1",
     "easeljs": "^1.0.2",
     "preloadjs": "^1.0.1",
     "soundjs": "^1.0.1",
-    "tweenjs": "^1.0.2",
-    "typescript": "^3.3.3333",
-    "yarn": "^1.13.0"
+    "tweenjs": "^1.0.2"
   },
   "devDependencies": {
     "@types/easeljs": "^1.0.0"

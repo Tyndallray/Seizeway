@@ -31,6 +31,8 @@
         helloLabel = new createjs.Text("Hello world", "40px Arial", "#000");
         helloLabel.x = 100;
         helloLabel.y = 100;
+
+        stage.addChild(helloLabel);
     }
     window.onload = Init;
 })();
