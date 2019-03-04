@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Tyndallray/Seizeway/issues"
   },
-  "homepage": "https://github.com/Tyndallray/Seizeway#readme"
+  "homepage": "https://github.com/Tyndallray/Seizeway#readme",
+  "dependencies": {
+    "typescript": "^3.3.3333"
+  }
 }
