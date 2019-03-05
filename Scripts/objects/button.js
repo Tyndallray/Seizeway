@@ -19,6 +19,7 @@ var objects;
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             var _this = _super.call(this, assetManager.getResult(imageString)) || this;
+            _this.assetManager = assetManager;
             _this.regX = _this.getBounds().width * 0.5;
             _this.regY = _this.getBounds().height * 0.5;
             _this.x = x;
@@ -30,7 +31,7 @@ var objects;
         }
         // Methods
         Button.prototype.mouseOver = function () {
-            this.alpha = 0.7;
+            this.alpha = 0.9;
             this.cursor = "pointer";
         };
         Button.prototype.mouseOut = function () {
