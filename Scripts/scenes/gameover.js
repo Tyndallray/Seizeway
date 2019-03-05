@@ -23,20 +23,32 @@ var scenes;
         }
         // Methods
         // Button Event Handlers
-        GameOverScene.prototype.backButtonClick = function () {
+        GameOverScene.prototype.menuButtonClick = function () {
             objects.Game.currentScene = config.Scene.START;
         };
+        GameOverScene.prototype.restartButtonClick = function () {
+            objects.Game.currentScene = config.Scene.GAME;
+        };
         GameOverScene.prototype.Start = function () {
-            this.gameOverLabel = new objects.Label("Game Over", "40px", "Consolas", "#000000", 320, 340, true);
-            this.backButton = new objects.Button(this.assetManager, "startButton", 320, 340);
+            this.gameOverLabel = new objects.Label("Game Over", "40px", "Shojumaru", "#FFF", 320, 220, true);
+            this.restart = new objects.Label("Restart", "20px", "Shojumaru", "#FFF", 320, 375, true);
+            this.menu = new objects.Label("Menu", "20px", "Shojumaru", "#FFF", 320, 305, true);
+            this.backButton = new objects.Button(this.assetManager, "startButton", 320, 300);
+            this.restartButton = new objects.Button(this.assetManager, "startButton", 320, 370);
+            this.background = new objects.Background(this.assetManager, "gameOverBackground", -100, 0, 0.33, 0.36);
             this.Main();
         };
         GameOverScene.prototype.Update = function () {
         };
         GameOverScene.prototype.Main = function () {
-            this.addChild(this.gameOverLabel);
+            this.addChild(this.background);
             this.addChild(this.backButton);
-            this.backButton.on("click", this.backButtonClick);
+            this.addChild(this.restartButton);
+            this.addChild(this.restart);
+            this.addChild(this.menu);
+            this.addChild(this.gameOverLabel);
+            this.backButton.on("click", this.menuButtonClick);
+            this.restartButton.on("click", this.restartButtonClick);
         };
         return GameOverScene;
     }(objects.Scene));

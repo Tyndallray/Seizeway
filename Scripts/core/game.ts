@@ -14,7 +14,8 @@
 
     assetManifest = [
         {id: "startButton", src:"./Assets/Button.png"},
-        {id: "menuBackground", src:"./Assets/MenuBackground.jpg"}
+        {id: "menuBackground", src:"./Assets/MenuBackground.jpg"},
+        {id: "gameOverBackground", src:"./Assets/GameOver.jpg"}
     ];
 
     function Init():void{
