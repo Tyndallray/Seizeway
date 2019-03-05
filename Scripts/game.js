@@ -20,7 +20,7 @@
     }
     function Main() {
         console.log("Game has Started");
-        helloLabel = new createjs.Text("Hello world", "40px Arial", "#000");
+        helloLabel = new objects.Label("Hello world", "80px", "Arial", "#000", 320, 700, true);
         helloLabel.x = 100;
         helloLabel.y = 100;
         stage.addChild(helloLabel);
