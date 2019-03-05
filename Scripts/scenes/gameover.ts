@@ -26,7 +26,7 @@ module scenes {
 
 
         public Start():void {
-            this.gameOverLabel = new objects.Label("Game Over", "40px", "Shojumaru", "#FFF", 320, 220, true);
+            this.gameOverLabel = new objects.Label("Victory", "40px", "Shojumaru", "#FFF", 320, 220, true);
             this.restart = new objects.Label("Restart", "20px", "Shojumaru", "#FFF", 320, 375, true);
             this.menu = new objects.Label("Menu", "20px", "Shojumaru", "#FFF", 320, 305, true);
             this.backButton = new objects.Button(this.assetManager, "startButton", 320, 300);
