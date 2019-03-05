@@ -12,6 +12,8 @@
     let currentScene: objects.Scene;
     let currentState: number;
 
+    let keyboardManager: managers.Keyboard;
+
     assetManifest = [
         {id: "startButton", src:"./Assets/Button.png"},
         {id: "menuBackground", src:"./Assets/MenuBackground.jpg"},
@@ -38,6 +40,9 @@
 
         objects.Game.currentScene = config.Scene.START;
         currentState = config.Scene.START;
+
+        keyboardManager = new managers.Keyboard();
+        objects.Game.keyboardManager = keyboardManager;
 
         Main();
     }

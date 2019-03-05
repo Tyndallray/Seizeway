@@ -7,6 +7,7 @@
     var assetManifest;
     var currentScene;
     var currentState;
+    var keyboardManager;
     assetManifest = [
         { id: "startButton", src: "./Assets/Button.png" },
         { id: "menuBackground", src: "./Assets/MenuBackground.jpg" },
@@ -27,6 +28,8 @@
         createjs.Ticker.on("tick", Update);
         objects.Game.currentScene = config.Scene.START;
         currentState = config.Scene.START;
+        keyboardManager = new managers.Keyboard();
+        objects.Game.keyboardManager = keyboardManager;
         Main();
     }
     function Update() {
