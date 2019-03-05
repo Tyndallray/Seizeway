@@ -23,7 +23,7 @@ module scenes {
         private restartButtonClick():void{
             objects.Game.currentScene = config.Scene.GAME;
         }
-
+l
 
         public Start():void {
             this.gameOverLabel = new objects.Label("Victory", "40px", "Shojumaru", "#FFF", 320, 220, true);
