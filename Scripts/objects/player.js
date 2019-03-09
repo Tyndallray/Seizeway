@@ -17,8 +17,14 @@ var objects;
         __extends(Player, _super);
         // Constructor
         function Player(assetManager) {
-            var _this = _super.call(this, assetManager, "startButton") || this;
+            var _this = _super.call(this, assetManager, "player") || this;
             _this.Start();
+            _this.scaleX = (20 / 768);
+            _this.scaleY = (20 / 768);
+            _this.halfW = 10;
+            _this.halfH = 10;
+            _this.width = 20;
+            _this.height = 20;
             return _this;
         }
         // Methods / functions
@@ -41,15 +47,27 @@ var objects;
             if (objects.Game.keyboardManager.moveRight) {
                 this.x += 5;
             }
+            if (objects.Game.keyboardManager.moveUp) {
+                this.y -= 5;
+            }
+            if (objects.Game.keyboardManager.moveDown) {
+                this.y += 5;
+            }
         };
         Player.prototype.CheckBounds = function () {
             // Check right boundary
-            if (this.x >= 600 - this.halfW) {
-                this.x = 600 - this.halfW;
+            if (this.x >= 640 - this.halfW) {
+                this.x = 640 - this.halfW;
             }
             // Check left boundary
             if (this.x <= this.halfW) {
                 this.x = this.halfW;
+            }
+            if (this.y <= this.halfH) {
+                this.y = this.halfH;
+            }
+            if (this.y >= 512 - this.halfH) {
+                this.y = 512 - this.halfH;
             }
         };
         return Player;
