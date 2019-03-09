@@ -4,6 +4,7 @@ module scenes {
         private playLabel: objects.Label;
         private nextButton: objects.Button;
         private player: objects.Player;
+        private wall: objects.Wall;
         // Constructor
         constructor(assetManager:createjs.LoadQueue) {
             super(assetManager);
@@ -15,11 +16,13 @@ module scenes {
             this.playLabel = new objects.Label("Game Playing", "40px", "Consolas", "#000000", 320, 240, true);
             this.nextButton = new objects.Button(this.assetManager, "startButton", 500, 340);
             this.player = new objects.Player(this.assetManager);
+            this.wall = new objects.Wall(this.assetManager, this.player);
             this.Main();
         }
 
         public Update(): void {
             this.player.Update();
+            this.wall.Update();
         }
 
 
@@ -36,6 +39,7 @@ module scenes {
             this.addChild(this.playLabel);
             this.addChild(this.nextButton);
             this.addChild(this.player);
+            this.addChild(this.wall);
             this.nextButton.on("click", this.nextButtonClick);
         }
     }

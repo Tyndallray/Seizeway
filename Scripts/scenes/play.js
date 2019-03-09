@@ -26,10 +26,12 @@ var scenes;
             this.playLabel = new objects.Label("Game Playing", "40px", "Consolas", "#000000", 320, 240, true);
             this.nextButton = new objects.Button(this.assetManager, "startButton", 500, 340);
             this.player = new objects.Player(this.assetManager);
+            this.wall = new objects.Wall(this.assetManager, this.player);
             this.Main();
         };
         PlayScene.prototype.Update = function () {
             this.player.Update();
+            this.wall.Update();
         };
         // Button Even Handlers
         PlayScene.prototype.nextButtonClick = function () {
@@ -42,6 +44,7 @@ var scenes;
             this.addChild(this.playLabel);
             this.addChild(this.nextButton);
             this.addChild(this.player);
+            this.addChild(this.wall);
             this.nextButton.on("click", this.nextButtonClick);
         };
         return PlayScene;

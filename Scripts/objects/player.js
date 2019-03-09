@@ -25,6 +25,10 @@ var objects;
             _this.halfH = 10;
             _this.width = 20;
             _this.height = 20;
+            _this.dontMoveDown = false;
+            _this.dontMoveLeft = false;
+            _this.dontMoveRight = false;
+            _this.dontMoveUp = false;
             return _this;
         }
         // Methods / functions
@@ -41,16 +45,16 @@ var objects;
         Player.prototype.Move = function () {
             // this.x = objects.Game.stage.mouseX; // objects.Game.stage is a global variable
             // Keyboard controls
-            if (objects.Game.keyboardManager.moveLeft) {
+            if (objects.Game.keyboardManager.moveLeft && !this.dontMoveLeft) {
                 this.x -= 5;
             }
-            if (objects.Game.keyboardManager.moveRight) {
+            if (objects.Game.keyboardManager.moveRight && !this.dontMoveRight) {
                 this.x += 5;
             }
-            if (objects.Game.keyboardManager.moveUp) {
+            if (objects.Game.keyboardManager.moveUp && !this.dontMoveUp) {
                 this.y -= 5;
             }
-            if (objects.Game.keyboardManager.moveDown) {
+            if (objects.Game.keyboardManager.moveDown && !this.dontMoveDown) {
                 this.y += 5;
             }
         };
