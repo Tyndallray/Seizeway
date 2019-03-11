@@ -25,8 +25,7 @@ module objects {
         // Methods / functions
         public Start():void {
             this.isDead = false;
-            this.x = 100;
-            this.y = 100;
+            this.ResetPosition();
         }
 
         public Update():void {
@@ -41,17 +40,22 @@ module objects {
             // Keyboard controls
 
             if(objects.Game.keyboardManager.moveLeft && !this.dontMoveLeft) {
-                this.x -= 2;
+                this.x -= 5;
             }
             if(objects.Game.keyboardManager.moveRight && !this.dontMoveRight) {
-                this.x += 2;
+                this.x += 5;
             }
             if(objects.Game.keyboardManager.moveUp && !this.dontMoveUp){
-                this.y -= 2;
+                this.y -= 5;
             }
             if(objects.Game.keyboardManager.moveDown && !this.dontMoveDown){
-                this.y += 2;
+                this.y += 5;
             }
+        }
+
+        public ResetPosition(){
+            this.x = 48;
+            this.y = 40;
         }
 
         public CheckBounds():void {

@@ -4,9 +4,11 @@ module objects{
         constructor(assetManager: createjs.LoadQueue, imageString:string, x:number = 0, y:number = 0) {
             super(assetManager.getResult(imageString));
             this.assetManager = assetManager;
+            
             this.regX = this.getBounds().width * 0.5;
             this.regY = this.getBounds().height * 0.5;
-
+            this.scaleX = 0.2;
+            this.scaleY = 0.2;
             this.x = x;
             this.y = y;
 

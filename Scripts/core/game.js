@@ -15,6 +15,9 @@
         { id: "player", src: "./Assets/Player.png" },
         { id: "wall", src: "./Assets/Wall.png" },
         { id: "endPoint", src: "./Assets/EndPoint.png" },
+        { id: "trap", src: "./Assets/Trap.png" },
+        { id: "laugh", src: "./Assets/Laugh.mp3" },
+        { id: "sadViolin", src: "./Assets/SadViolin.mp3" },
         { id: "music", src: "./Assets/MazeMusic.ogg" }
     ];
     function Init() {

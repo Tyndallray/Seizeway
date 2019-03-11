@@ -22,6 +22,8 @@ var objects;
             _this.assetManager = assetManager;
             _this.regX = _this.getBounds().width * 0.5;
             _this.regY = _this.getBounds().height * 0.5;
+            _this.scaleX = 0.2;
+            _this.scaleY = 0.2;
             _this.x = x;
             _this.y = y;
             // Setup event handlers

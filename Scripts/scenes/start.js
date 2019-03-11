@@ -27,11 +27,11 @@ var scenes;
         };
         // Use start function to create objects
         StartScene.prototype.Start = function () {
-            this.gameName = new objects.Label("Seizeway", "70px", "Shojumaru", "#FB1", 300, 75, true);
-            this.myName = new objects.Label("By Devesh Vasnani", "10px", "Shojumaru", "#FB1", 390, 100, true);
+            this.gameName = new objects.Label("Seizeway", "70px", "Shojumaru", "#F84", 300, 175, true);
+            this.myName = new objects.Label("By Devesh Vasnani", "10px", "Shojumaru", "#F84", 390, 200, true);
             this.welcomeLabel = new objects.Label("Start", "20px", "Shojumaru", "#FFF", 320, 307, true);
             this.startButton = new objects.Button(this.assetManager, "startButton", 320, 300);
-            this.background = new objects.Background(this.assetManager, "menuBackground", -100, 0, 0.9, 0.9);
+            this.background = new objects.Background(this.assetManager, "menuBackground", 0, 20, 0.9, 0.47);
             this.Main();
         };
         StartScene.prototype.Update = function () {

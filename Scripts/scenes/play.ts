@@ -5,17 +5,17 @@ module scenes {
         private walls: Array<objects.Wall>;
         private level: string;
         private levelSizeX: number;
-        private levelSizeY: number;
-        private audio: createjs.Sound;
         private endPoint: objects.EndPoint;
+        private trap: objects.Trap;
+        private trap2: objects.Trap;
+        private trap3: objects.Trap;
         
         
         // Constructor
         constructor(assetManager:createjs.LoadQueue) {
             super(assetManager);
             this.levelSizeX = 30;
-            this.levelSizeY = 3;
-            this.level = "100111111111111111111111111111100100000100000000000001000001100100000100000000000001000001100000100100111111111001111001100000100100000000001001000001111111100100000000001001000001100000000111111111001001001111100000000100100000001001000001100111100100100000001001000001100000100000100111111001111001100000100000100000001001000001100100111111100000001001000001100100000000000111111001001001100100000000000100000001001001100111111111111100000001001001100100000000000100111111001001100000000000000000000000001001100000111111100000000000001001100111100000111111111111001001100000100000100000100001111001100000000100000000000000000001100100000100000100000100000001111111111111111111111111111111";
+            this.level = "100111111111111111111111111111100100000100000000000001000001100100000100000000000001000001100000100100111111111001111001100000100100000000001001000001111111100100000000001001000001100000000111111111001001001111100000000100100000001001000001100111100100100000001001000001100000100000100111111001111001100000100000100000001001000001100100111111100000001001000001100100000000000111111001001001100100000000000100000001001001100111111111111100000001001001100100000000000100111111001001100000000000000000000000001001100000111111100000000000001001100111100000111111111111001001100000100000100000100001111001100000000100000000000000000001100100000100000100000000000001111111111111111111111111111111";
             this.walls = new Array<objects.Wall>();
             
             createjs.Sound.play("music");
@@ -25,6 +25,9 @@ module scenes {
         public Start(): void {
             this.player = new objects.Player(this.assetManager);
             this.endPoint = new objects.EndPoint(this.assetManager, this.player, 520, 42);
+            this.trap = new objects.Trap(this.assetManager, this.player, 592, 282);
+            this.trap2 = new objects.Trap(this.assetManager, this.player, 247, 300);
+            this.trap3 = new objects.Trap(this.assetManager, this.player, 247, 330);
             this.Main();
         }
 
@@ -34,6 +37,9 @@ module scenes {
                 element.Update();
             });
             this.endPoint.Update();
+            this.trap.Update();
+            this.trap2.Update();
+            this.trap3.Update();
         }
 
 
@@ -50,6 +56,9 @@ module scenes {
             
             this.addChild(this.player);
             this.addChild(this.endPoint);
+            this.addChild(this.trap3);
+            this.addChild(this.trap);
+            this.addChild(this.trap2);
             var j=0;
             var k=0;
             var l=0;

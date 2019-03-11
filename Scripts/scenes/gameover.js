@@ -30,12 +30,12 @@ var scenes;
             objects.Game.currentScene = config.Scene.GAME;
         };
         GameOverScene.prototype.Start = function () {
-            this.gameOverLabel = new objects.Label("Victory", "40px", "Shojumaru", "#FFF", 320, 220, true);
-            this.restart = new objects.Label("Restart", "20px", "Shojumaru", "#FFF", 320, 375, true);
-            this.menu = new objects.Label("Menu", "20px", "Shojumaru", "#FFF", 320, 305, true);
-            this.backButton = new objects.Button(this.assetManager, "startButton", 320, 300);
-            this.restartButton = new objects.Button(this.assetManager, "startButton", 320, 370);
-            this.background = new objects.Background(this.assetManager, "gameOverBackground", -100, 0, 0.33, 0.36);
+            this.gameOverLabel = new objects.Label("Victory", "40px", "Shojumaru", "#A00", 320, 220, true);
+            this.restart = new objects.Label("Restart", "20px", "Shojumaru", "#FFF", 320, 355, true);
+            this.menu = new objects.Label("Menu", "20px", "Shojumaru", "#FFF", 320, 285, true);
+            this.backButton = new objects.Button(this.assetManager, "startButton", 320, 280);
+            this.restartButton = new objects.Button(this.assetManager, "startButton", 320, 350);
+            this.background = new objects.Background(this.assetManager, "gameOverBackground", 0, 0, 1, 1.45);
             this.Main();
         };
         GameOverScene.prototype.Update = function () {
