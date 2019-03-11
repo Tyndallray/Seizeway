@@ -27,8 +27,9 @@ var scenes;
         };
         // Use start function to create objects
         StartScene.prototype.Start = function () {
-            this.gameName = new objects.Label("Seizeway", "70px", "Shojumaru", "#F84", 300, 175, true);
-            this.myName = new objects.Label("By Devesh Vasnani", "10px", "Shojumaru", "#F84", 390, 200, true);
+            this.gameName = new objects.Label("Seizeway", "70px", "Shojumaru", "#F11", 300, 175, true);
+            this.myName = new objects.Label("By Devesh Vasnani", "15px", "Shojumaru", "#F11", 390, 200, true);
+            this.instruction = new objects.Label("HOW TO PLAY? AVOID WALLS AND TRAPS! USE WSAD/ARROW KEYS", "10px", "Shojumaru", "#F24", 320, 350, true);
             this.welcomeLabel = new objects.Label("Start", "20px", "Shojumaru", "#FFF", 320, 307, true);
             this.startButton = new objects.Button(this.assetManager, "startButton", 320, 300);
             this.background = new objects.Background(this.assetManager, "menuBackground", 0, 20, 0.9, 0.47);
@@ -42,6 +43,7 @@ var scenes;
             this.addChild(this.welcomeLabel);
             this.addChild(this.gameName);
             this.addChild(this.myName);
+            this.addChild(this.instruction);
             this.startButton.on("click", this.startButtonClick);
         };
         return StartScene;
