@@ -16,21 +16,21 @@ var objects;
     var Wall = /** @class */ (function (_super) {
         __extends(Wall, _super);
         // Constructor
-        function Wall(assetManager, player) {
+        function Wall(assetManager, player, x, y) {
             var _this = _super.call(this, assetManager, "wall") || this;
             _this.isWalkable = false;
             _this.player = player;
             _this.Start();
-            _this.halfW = 10;
-            _this.halfH = 10;
+            _this.halfW = Wall.WALL_WIDTH / 2;
+            _this.halfH = Wall.WALL_HEIGHT;
             _this.scaleX = (2 / 100);
             _this.scaleY = (2 / 100);
+            _this.x = x;
+            _this.y = y;
             return _this;
         }
         // Methods / functions
         Wall.prototype.Start = function () {
-            this.x = 100;
-            this.y = 100;
         };
         Wall.prototype.Update = function () {
             this.CheckBounds();
@@ -39,42 +39,37 @@ var objects;
         Wall.prototype.Move = function () {
         };
         Wall.prototype.CheckBounds = function () {
-            // if player lies in the same x coordinate
-            if (this.player.x + this.player.halfW > this.x - this.halfW && this.player.x - this.player.halfW < this.x + this.halfW) {
-                //if player is below the wall
-                //if player's top edge is more than wall's bottom edge + 5and plaeyer's top edge is mo than wall's y
-                if (this.player.y - this.player.halfH < this.y + this.halfH + 5 && (this.player.y - this.player.halfH > this.y)) {
-                    this.player.dontMoveUp = true;
-                }
-                //if player's bottom edge is more than wall's top edge - 5 and plaeyer's bottom edge is greater than wall's top edge - 10
-                else if (this.player.y + this.player.halfH > this.y - this.halfH - 5 && this.player.y + this.player.halfH < this.y) {
-                    this.player.dontMoveDown = true;
-                }
-                else {
-                    this.player.dontMoveUp = false;
-                    this.player.dontMoveDown = false;
+            //RANGE [BOX SIZE]HALFW of player and box and HALFH of player and box
+            //if player.x - wall.x is positive RIGHT SIDE
+            //if player.x - wall.x is negative LEFT SIDE
+            //if player.y - wall.y is positive DOWN SIDE
+            //if player.y - wall.y if negative UP SIDE
+            var vectorX = this.player.x - this.x;
+            var vectorY = this.player.y - this.y;
+            var biggerHH = this.halfH > this.player.halfH ? this.halfH : this.player.halfH;
+            var biggerHW = this.halfW > this.player.halfW ? this.halfW : this.player.halfW;
+            //player on right of the wall
+            if (vectorX > 0 && vectorX <= this.player.halfW + this.halfW) {
+                if (vectorY > -biggerHH && vectorY < biggerHH)
+                    this.player.x += 2;
+            }
+            if (vectorX < 0 && vectorX >= -(this.halfH)) {
+                if (vectorY > -biggerHH && vectorY < biggerHH)
+                    this.player.x -= 2;
+            }
+            if (vectorY > 0 && vectorY <= this.player.halfW + this.halfW) {
+                if (vectorX > -biggerHW && vectorX < biggerHW) {
+                    this.player.y += 2;
                 }
             }
-            //if player lies in the same y coordinate
-            else if (this.player.y + this.player.halfH > this.y - this.halfH && this.player.y - this.player.halfH < this.y + this.halfH) {
-                if (this.player.x + this.player.halfW > this.x - this.halfW - 5 && this.player.x + this.player.halfH < this.x) {
-                    this.player.dontMoveRight = true;
+            if (vectorY < 0 && vectorY >= -(this.player.halfW + this.halfW)) {
+                if (vectorX > -biggerHW && vectorX < biggerHW) {
+                    this.player.y -= 2;
                 }
-                else if (this.player.x - this.player.halfW < this.x + this.halfW + 5 && this.player.x - this.player.halfW > this.x) {
-                    this.player.dontMoveLeft = true;
-                }
-                else {
-                    this.player.dontMoveRight = false;
-                    this.player.dontMoveLeft = false;
-                }
-            }
-            else {
-                this.player.dontMoveUp = false;
-                this.player.dontMoveDown = false;
-                this.player.dontMoveRight = false;
-                this.player.dontMoveLeft = false;
             }
         };
+        Wall.WALL_WIDTH = 21;
+        Wall.WALL_HEIGHT = 21;
         return Wall;
     }(objects.GameObject));
     objects.Wall = Wall;

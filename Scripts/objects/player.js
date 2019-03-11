@@ -46,16 +46,16 @@ var objects;
             // this.x = objects.Game.stage.mouseX; // objects.Game.stage is a global variable
             // Keyboard controls
             if (objects.Game.keyboardManager.moveLeft && !this.dontMoveLeft) {
-                this.x -= 5;
+                this.x -= 2;
             }
             if (objects.Game.keyboardManager.moveRight && !this.dontMoveRight) {
-                this.x += 5;
+                this.x += 2;
             }
             if (objects.Game.keyboardManager.moveUp && !this.dontMoveUp) {
-                this.y -= 5;
+                this.y -= 2;
             }
             if (objects.Game.keyboardManager.moveDown && !this.dontMoveDown) {
-                this.y += 5;
+                this.y += 2;
             }
         };
         Player.prototype.CheckBounds = function () {

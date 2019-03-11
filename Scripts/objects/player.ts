@@ -6,6 +6,7 @@ module objects {
         public dontMoveDown: boolean;
         public dontMoveLeft: boolean;
         public dontMoveRight: boolean;
+        
         // Constructor
         constructor(assetManager:createjs.LoadQueue) {
             super(assetManager, "player");
@@ -40,16 +41,16 @@ module objects {
             // Keyboard controls
 
             if(objects.Game.keyboardManager.moveLeft && !this.dontMoveLeft) {
-                this.x -= 5;
+                this.x -= 2;
             }
             if(objects.Game.keyboardManager.moveRight && !this.dontMoveRight) {
-                this.x += 5;
+                this.x += 2;
             }
             if(objects.Game.keyboardManager.moveUp && !this.dontMoveUp){
-                this.y -= 5;
+                this.y -= 2;
             }
             if(objects.Game.keyboardManager.moveDown && !this.dontMoveDown){
-                this.y += 5;
+                this.y += 2;
             }
         }
 

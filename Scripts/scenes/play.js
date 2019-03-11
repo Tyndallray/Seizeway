@@ -18,20 +18,26 @@ var scenes;
         // Constructor
         function PlayScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
+            _this.levelSizeX = 30;
+            _this.levelSizeY = 3;
+            _this.level = "100111111111111111111111111111100100000100000000000001000001100100000100000000000001000001100000100100111111111001111001100000100100000000001001000001111111100100000000001001000001100000000111111111001001001111100000000100100000001001000001100111100100100000001001000001100000100000100111111001111001100000100000100000001001000001100100111111100000001001000001100100000000000111111001001001100100000000000100000001001001100111111111111100000001001001100100000000000100111111001001100000000000000000000000001001100000111111100000000000001001100111100000111111111111001001100000100000100000100001111001100000000100000000000000000001100100000100000100000100000001111111111111111111111111111111";
+            _this.walls = new Array();
+            createjs.Sound.play("music");
             _this.Start();
             return _this;
         }
         // Methods
         PlayScene.prototype.Start = function () {
-            this.playLabel = new objects.Label("Game Playing", "40px", "Consolas", "#000000", 320, 240, true);
-            this.nextButton = new objects.Button(this.assetManager, "startButton", 500, 340);
             this.player = new objects.Player(this.assetManager);
-            this.wall = new objects.Wall(this.assetManager, this.player);
+            this.endPoint = new objects.EndPoint(this.assetManager, this.player, 520, 42);
             this.Main();
         };
         PlayScene.prototype.Update = function () {
             this.player.Update();
-            this.wall.Update();
+            this.walls.forEach(function (element) {
+                element.Update();
+            });
+            this.endPoint.Update();
         };
         // Button Even Handlers
         PlayScene.prototype.nextButtonClick = function () {
@@ -41,11 +47,27 @@ var scenes;
             objects.Game.currentScene = config.Scene.START;
         };
         PlayScene.prototype.Main = function () {
-            this.addChild(this.playLabel);
-            this.addChild(this.nextButton);
+            var _this = this;
             this.addChild(this.player);
-            this.addChild(this.wall);
-            this.nextButton.on("click", this.nextButtonClick);
+            this.addChild(this.endPoint);
+            var j = 0;
+            var k = 0;
+            var l = 0;
+            for (var i = 0; i < this.level.length; i++) {
+                if (i % this.levelSizeX == 0) {
+                    j++;
+                    k = 0;
+                }
+                if (this.level.charAt(i) == "1") {
+                    var temp = new objects.Wall(this.assetManager, this.player, k * objects.Wall.WALL_WIDTH + 16, j * objects.Wall.WALL_HEIGHT);
+                    this.walls[l] = temp;
+                    l++;
+                }
+                k++;
+            }
+            this.walls.forEach(function (element) {
+                _this.addChild(element);
+            });
         };
         return PlayScene;
     }(objects.Scene));
