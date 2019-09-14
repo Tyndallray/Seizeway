@@ -32,7 +32,7 @@ lite-server
 
 ## Author
 
-* **Tyndallray**
+* **Devesh Vasnani**
     * **Github** - (https://github.com/Tyndallray)
 
 ## Licence
